@@ -1,0 +1,77 @@
+
+#include <Arduino.h>
+#include <Adafruit_NeoPixel.h>
+
+int speed=500;
+
+Adafruit_NeoPixel pixels = Adafruit_NeoPixel(8, 14, NEO_GRB + NEO_KHZ800);
+int red[]={0,0,0,0,0,0,0,0};
+int green[]={0,0,0,0,0,0,0,0};
+int blue[]={0,0,0,0,0,0,0,0};
+
+void setup() {
+  pixels.begin();
+}
+
+void loop() {
+
+  for(int i=0; i < 24 ; i++) { 
+  pixels.clear(); 
+  pixels.setPixelColor(i % 8, pixels.Color(random(255), random(255), random(255)));
+  pixels.show();  
+  delay(random(300,500));
+  } 
+
+
+   
+  for(int i=0; i < 24; i+=2) { 
+  int r1=random(255);
+  int r2=random(255);
+  int r3=random(255);
+  pixels.clear(); 
+  pixels.setPixelColor(i % 8, pixels.Color(r1, r2, r3));
+  pixels.setPixelColor((i % 8)+1, pixels.Color(r1, r2, r3));
+  pixels.show();  
+  delay(random(300,500)); 
+  } 
+
+   
+  for(int w=0; w < 10; w++) {
+    for(int i=0; i < 2; i++) { 
+    int r1=random(255);
+    int r2=random(255);
+    int r3=random(255);
+    pixels.clear(); 
+    pixels.setPixelColor(i, pixels.Color(r1, r2, r3));
+    pixels.setPixelColor(i+2, pixels.Color(r1,r2, r3));
+    pixels.setPixelColor(i+4, pixels.Color(r1, r2, r3));
+    pixels.setPixelColor(i+6, pixels.Color(r1, r2, r3));
+    pixels.show();  
+    delay(random(300,500)); 
+    }
+  } 
+
+
+  for(int k=0; k < 30; k++) { 
+    int r1=random(255);
+    int r2=random(255);
+    int r3=random(255);
+    for(int i=0; i < 8; i++) { 
+     pixels.setPixelColor(i, pixels.Color(r1, r2, r3));
+    }
+    pixels.show();  
+    delay(random(300,500)); 
+  }
+
+
+  pixels.clear();
+  for(int k=0; k < 30; k++) { 
+  for(int i=0; i < 8; i++) { 
+  pixels.setPixelColor(i, pixels.Color(random(255),random(255) , random(255)));
+  }
+  pixels.show();  
+  delay(random(300,500)); 
+  
+  
+}
+}
